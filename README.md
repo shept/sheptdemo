@@ -4,7 +4,7 @@ A very basic shept feature demonstration application that is available online fo
 It illustrates most of shept features
 
 * usage of datagrids
-* creating and modifying date
+* creating and modifying dates
 * search, sort and navigate
 * data validation and error handling
 * localization
