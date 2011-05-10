@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Class-Path: antlr-2.7.6.jar aopalliance-1.0.jar asm-1.5.3.jar asm-attr
+ s-1.5.3.jar aspectjrt-1.6.8.jar aspectjweaver-1.6.8.jar cglib-2.1_3.j
+ ar commons-collections-2.1.1.jar commons-logging-1.1.1.jar commons-ne
+ t-2.2.jar dom4j-1.6.1.jar ehcache-1.2.3.jar hibernate-3.2.7.ga.jar im
+ aging-01012005.jar jcaptcha-1.0.jar jcaptcha-api-1.0.jar jsp-api-2.1.
+ jar jta-1.0.1B.jar persistence-api-1.0.jar servlet-api-2.3.jar Shept.
+ jar spring-aop-3.0.3.RELEASE.jar spring-asm-3.0.5.RELEASE.jar spring-
+ beans-3.0.5.RELEASE.jar spring-context-3.0.5.RELEASE.jar spring-conte
+ xt-support-3.0.5.RELEASE.jar spring-core-3.0.5.RELEASE.jar spring-exp
+ ression-3.0.5.RELEASE.jar spring-jdbc-3.0.5.RELEASE.jar spring-orm-3.
+ 0.5.RELEASE.jar spring-security-core-3.0.5.RELEASE.jar spring-tx-3.0.
+ 5.RELEASE.jar spring-web-3.0.5.RELEASE.jar spring-webmvc-3.0.5.RELEAS
+ E.jar
+

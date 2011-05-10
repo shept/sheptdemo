@@ -1,0 +1,236 @@
+<jsp:root
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:security="http://www.springframework.org/security/tags"
+	xmlns:spring="http://www.springframework.org/tags"
+	version="2.0"
+>
+
+	<script type="text/javascript" >
+		#territories{display:block;position:absolute;left:10px;padding-top:10px;z-index:5;}
+		#territories span{float:left;}
+		#territoryButton{position:absolute;width:193px;top:10px;left:0;}
+		#territoryButton span{margin:4px 8px 0 0;float:left;display:inline;color:white;}
+		#territoryButton ul li{float:left;padding:8px 5px 0 0;margin:0;}
+		.mac #territoryButton ul li{padding-top:6px;}
+		#territoryList{width:193px;background-color:#202020;position:absolute;top:10px;left:-10px;padding:0px 5px 10px 10px;display:none;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
+		#territoryList span{padding:4px 8px 0 0;float:left;display:inline;color:white;}
+		#territoryList ul{clear:both;display:inline;float:left;width:193px;padding:5px 0;}
+		#territoryList ul li{float:left;padding:5px 5px 0 0;margin:0;}
+		#territoryList ul a,#territoryList ul a:visited{display:block;margin-left:0px;padding:1px;background-color:rgba(255, 255, 255, 0.5);}
+		#territoryList ul a:hover,#territoryList ul a:visited:hover{background-color:rgba(255, 255, 255, 0.75);}
+		#territoryList ul a.activeFlag,#territoryList ul a.activeFlag:hover,#territoryList ul a.activeFlag:visited:hover{background-color:white;}
+		#territoryList ul a img,#territoryList ul a:visited img{display:block;}
+		#territoryList ul a.globalFlag{margin:-3px 0 -2px 0;}
+	</script>
+
+
+
+
+	<div id="territories">
+
+		<div id="territoryButton">
+			
+			<span>Select country:</span>
+			<ul><li><a href="#"><img src="/media/flags/DE.png" alt="" class="" /></a></li></ul>
+			<div class="clear"><!-- --></div>
+
+		</div>
+
+		<div id="territoryList">
+			<span>Select country:</span>
+			<div>
+				<ul>
+					<li>
+						<a title="United Kingdom" class="regularFlag" href="/gb/home/">
+							<img src="/media/flags/GB.png" width="16" height="11" alt="United Kingdom" />
+						</a>
+					</li>
+					<li>
+						<a title="Argentina" class="regularFlag" href="/ar/home/">
+							<img src="/media/flags/AR.png" width="16" height="11" alt="Argentina" />
+						</a>
+					</li>
+					<li>
+						<a title="Austria" class="regularFlag" href="/at/home/">
+							<img src="/media/flags/AT.png" width="16" height="11" alt="Austria" />
+						</a>
+					</li>
+					<li>
+						<a title="Australia" class="regularFlag" href="/au/home/">
+							<img src="/media/flags/AU.png" width="16" height="11" alt="Australia" />
+						</a>
+					</li>
+					<li>
+						<a title="Belgium" class="regularFlag" href="/be/home/">
+							<img src="/media/flags/BE.png" width="16" height="11" alt="Belgium" />
+						</a>
+					</li>
+					<li>
+						<a title="Brazil" class="regularFlag" href="/br/home/">
+							<img src="/media/flags/BR.png" width="16" height="11" alt="Brazil" />
+						</a>
+					</li>
+					<li>
+						<a title="Switzerland" class="regularFlag" href="/ch/home/">
+							<img src="/media/flags/CH.png" width="11" height="11" alt="Switzerland" />
+						</a>
+					</li>
+					<li>
+						<a title="China" class="regularFlag" href="/cn/home/">
+							<img src="/media/flags/CN.png" width="16" height="11" alt="China" />
+						</a>
+					</li>
+					<li>
+						<a title="Germany" class="activeFlag" href="/de/home/">
+							<img src="/media/flags/DE.png" width="16" height="11" alt="Germany" />
+						</a>
+					</li>
+					<li>
+						<a title="Denmark" class="regularFlag" href="/dk/home/">
+							<img src="/media/flags/DK.png" width="16" height="11" alt="Denmark" />
+						</a>
+					</li>
+					<li>
+						<a title="Estonia" class="regularFlag" href="/ee/home/">
+							<img src="/media/flags/EE.png" width="16" height="11" alt="Estonia" />
+						</a>
+					</li>
+					<li>
+						<a title="Spain" class="regularFlag" href="/es/home/">
+							<img src="/media/flags/ES.png" width="16" height="11" alt="Spain" />
+						</a>
+					</li>
+					<li>
+						<a title="Finland" class="regularFlag" href="/fi/home/">
+							<img src="/media/flags/FI.png" width="16" height="11" alt="Finland" /><
+						/a>
+					</li>
+					<li>
+						<a title="France" class="regularFlag" href="/fr/home/">
+							<img src="/media/flags/FR.png" width="16" height="11" alt="France" />
+						</a>
+					</li>
+					<li>
+						<a title="Greece" class="regularFlag" href="/gr/home/">
+							<img src="/media/flags/GR.png" width="16" height="11" alt="Greece" />
+						</a>
+					</li>
+					<li>
+						<a title="Hong Kong" class="regularFlag" href="/hk/home/">
+							<img src="/media/flags/HK.png" width="16" height="11" alt="Hong Kong" />
+						</a>
+					</li>
+					<li>
+						<a title="Hungary" class="regularFlag" href="/hu/home/">
+							<img src="/media/flags/HU.png" width="16" height="11" alt="Hungary" />
+						</a>
+					</li>
+					<li>
+						<a title="Indonesia" class="regularFlag" href="/id/home/">
+							<img src="/media/flags/ID.png" width="16" height="11" alt="Indonesia" />
+						</a>
+					</li>
+					<li>
+						<a title="Ireland" class="regularFlag" href="/ie/home/">
+							<img src="/media/flags/IE.png" width="16" height="11" alt="Ireland" />
+						</a>
+					</li>
+					<li>
+						<a title="India" class="regularFlag" href="/in/home/">
+							<img src="/media/flags/IN.png" width="16" height="11" alt="India" />
+						</a>
+					</li>
+					<li>
+						<a title="Italy" class="regularFlag" href="/it/home/">
+							<img src="/media/flags/IT.png" width="16" height="11" alt="Italy" />
+						</a>
+					</li>
+					<li>
+						<a title="Japan" class="regularFlag" href="/jp/home/">
+							<img src="/media/flags/JP.png" width="16" height="11" alt="Japan" />
+						</a>
+					</li>
+					<li>
+						<a title="Republic of Korea" class="regularFlag" href="/kr/home/">
+							<img src="/media/flags/KR.png" width="16" height="11" alt="Republic of Korea" />
+						</a>
+					</li>
+					<li>
+						<a title="Middle East" class="regularFlag" href="/me/home/">
+							<img src="/media/flags/ME.png" width="56" height="11" alt="Middle East" />
+						</a>
+					</li>
+					<li>
+						<a title="Mexico" class="regularFlag" href="/mx/home/">
+							<img src="/media/flags/MX.png" width="16" height="11" alt="Mexico" />
+						</a>
+					</li>
+					<li>
+						<a title="Malaysia" class="regularFlag" href="/my/home/">
+							<img src="/media/flags/MY.png" width="16" height="11" alt="Malaysia" />
+						</a>
+					</li>
+					<li>
+						<a title="Netherlands" class="regularFlag" href="/nl/home/">
+							<img src="/media/flags/NL.png" width="16" height="11" alt="Netherlands" />
+						</a>
+					</li>
+					<li>
+						<a title="Norway" class="regularFlag" href="/no/home/">
+							<img src="/media/flags/NO.png" width="16" height="11" alt="Norway" />
+						</a>
+					</li>
+					<li>
+						<a title="New Zealand" class="regularFlag" href="/nz/home/">
+							<img src="/media/flags/NZ.png" width="16" height="11" alt="New Zealand" />
+						</a>
+					</li>
+					<li>
+						<a title="Philippines" class="regularFlag" href="/ph/home/">
+							<img src="/media/flags/PH.png" width="16" height="11" alt="Philippines" />
+						</a>
+					</li>
+					<li>
+						<a title="Poland" class="regularFlag" href="/pl/home/">
+							<img src="/media/flags/PL.png" width="16" height="11" alt="Poland" />
+						</a>
+					</li>
+					<li>
+						<a title="Portugal" class="regularFlag" href="/pt/home/">
+							<img src="/media/flags/PT.png" width="16" height="11" alt="Portugal" />
+						</a>
+					</li>
+					<li>
+						<a title="Russian Federation" class="regularFlag" href="/ru/home/">
+							<img src="/media/flags/RU.png" width="16" height="11" alt="Russian Federation" />
+						</a>
+					</li>
+					<li>
+						<a title="Sweden" class="regularFlag" href="/se/home/">
+							<img src="/media/flags/SE.png" width="16" height="11" alt="Sweden" />
+						</a>
+					</li>
+					<li>
+						<a title="Singapore" class="regularFlag" href="/sg/home/">
+							<img src="/media/flags/SG.png" width="16" height="11" alt="Singapore" />
+						</a>
+					</li>
+					<li>
+						<a title="Taiwan" class="regularFlag" href="/tw/home/">
+							<img src="/media/flags/TW.png" width="16" height="11" alt="Taiwan" />
+						</a>
+					</li>
+					<li>
+						<a title="South Africa" class="regularFlag" href="/za/home/">
+							<img src="/media/flags/ZA.png" width="16" height="11" alt="South Africa" />
+						</a>
+					</li>
+				</ul>
+				<div class="clear"><!-- --></div>
+			</div>
+		</div>
+
+		<div class="clear"><!-- --></div>
+	</div>
+</jsp:root>

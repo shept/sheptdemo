@@ -1,0 +1,27 @@
+<jsp:root
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:security="http://www.springframework.org/security/tags"
+	xmlns:spring="http://www.springframework.org/tags"
+	version="2.0"
+>
+	<script
+		type="text/javascript"
+		src="includes/js/coolmenu/coolmenu.js"
+	><!-- jspx problem workaround, comment must be included -->
+	</script>
+
+<div id="coolmenu" >
+	<p class="menuBlankBox">&#160;</p>
+	<a class="${servletPath eq '/person.shept' ? 'naviSel' : 'navi'}" 
+		href="http:person.shept" onMouseover="showtext('')" onMouseout="hidetext()">
+		<spring:message code="persons" />
+	</a>
+	<a class="${servletPath eq '/address.shept' ? 'naviSel' : 'navi'}" 
+		href="http:address.shept" onMouseover="showtext('')" onMouseout="hidetext()">
+		<spring:message code="addresses" />
+	</a>
+</div>
+
+</jsp:root>
+

@@ -1,0 +1,153 @@
+<jsp:root
+	xmlns:jsp="http://java.sun.com/JSP/Page"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:shept-pager="http://www.shept.org/tags/shept-pager"
+	xmlns:shept-opt="http://www.shept.org/tags/shept-opt"
+	xmlns:shept-core="http://www.shept.org/tags/shept-core"
+	version="2.0"
+>
+	<script  type="text/javascript" language="JavaScript">
+	/* <![CDATA[ */
+	function picClick(pic){
+		var attr = pic.getAttribute("height", 0);
+		if (attr == null || attr != "24") 
+			{
+			pic.setAttribute("height", "24");
+			} 
+		else 
+			{
+			pic.setAttribute("height", "48");
+			}		
+	}
+	/* ]]> */
+	</script>
+
+	<!-- show or hide file upload button --> 
+	<script  type="text/javascript" language="JavaScript">
+	/* <![CDATA[ */
+	function picAdd(rowId){
+		var sel = "#" + rowId;
+		if ($(sel).is(":hidden")) {
+			$(sel).show();
+		} else {
+			$(sel).hide();			
+		}
+	}
+	/* ]]> */
+	</script>
+
+	<shept-core:table > 
+	  <jsp:attribute name="tabHeader" >
+		<tr class="sheptTableHeader">
+			<th />
+			<th > 
+				<spring:message var="defaultText" code="person.imageDelete" />
+				<img src="${images}/16x16/picture_delete.png" title="${defaultText}" alt="${defaultText}" />
+			</th>
+			<th nowrap="nowrap" >
+				<spring:message code="person.image" />	
+			</th>
+			<th nowrap="nowrap" >
+				<shept-pager:sort sortCol="firstName" code="person.firstName"/>	
+			</th>
+			<th nowrap="nowrap" >
+				<shept-pager:sort sortCol="name" code="person.name" />	
+			</th>
+			<th nowrap="nowrap" >
+				<shept-pager:sort sortCol="birthdate" code="person.birthday"  />	
+			</th>
+			<th nowrap="nowrap" >
+				<shept-pager:sort sortCol="male" code="person.male" />	
+			</th>
+			<th />
+			<th />
+		</tr>
+	  </jsp:attribute>
+
+	  <jsp:attribute name="tabRow" >
+
+		<!-- determine the locale for use in the jQuery calendar -->
+		<c:set var="loc" value="${pageContext.response.locale.language}" />
+		<c:if test="${loc eq 'en'}" >
+			<c:set var="loc" value="" />
+		</c:if>
+
+
+		<tr class="${rowClassDefault}">
+			<td>
+				<shept-opt:iconRow />
+			</td>
+
+			<c:choose>
+				<c:when test="${not empty rowObject.image and fn:length(rowObject.image) gt 0 and not rowObject.delpic}">
+					<td>
+						<form:checkbox path="delpic" cssErrorClass="sheptFieldError" />
+					</td>
+					<td>
+						<img onClick='picClick(this)' style="cursor:pointer;" height="24" src="imgFile.shept?id=${rowObject.id}" />
+					</td>
+				</c:when>
+				<c:otherwise>
+					<td/>
+					<td>
+						<img onClick="picAdd('${rowPathId}_fileupload')" style="cursor:pointer;" src="${images}/16x16/dummyPerson16.png" />
+					</td>
+				</c:otherwise>
+			</c:choose>
+
+			<td>
+				<form:input path="firstName" cssErrorClass="sheptFieldError" />
+			</td>
+			<td>
+				<form:input path="name" cssErrorClass="sheptFieldError" />
+			</td>
+			<td>
+				<!--  Let's use the jQuery datepicker for birthday-->
+				<form:input
+					path="birthdate"
+					id="${rowPathId}_date-field"
+					size="10"
+					cssErrorClass="sheptFieldError"
+				/> &#160; 
+   				<script>
+					$(function() {
+						$.datepicker.setDefaults( $.datepicker.regional["${loc}"]);
+						$("#${rowPathId}_date-field").datepicker({
+							showWeek: true,
+							showButtonPanel: true,
+							buttonImage: "${images}/16x16/date.png",
+							showOn: "both",
+							buttonImageOnly: true
+						});
+					});
+				</script>
+			</td>
+			<td>
+				<form:checkbox path="male" cssErrorClass="sheptFieldError" />
+			</td>
+				
+			<td>
+				<shept-opt:chainRow chainName="addresses" code="addresses" />
+			</td>
+
+			<td>
+				<shept-opt:confirmDeleteRow />
+			</td>
+		</tr>
+		<tr>
+		    <td id="${rowPathId}_fileupload" colspan="5" style="display: none" >
+			    <form:input type="file"  path="uploadImage" cssErrorClass="sheptFieldError" />
+            </td>
+		</tr>
+	  </jsp:attribute>
+
+	  <jsp:attribute name="tabSubmit" >
+	  	<shept-opt:submission />
+	  </jsp:attribute>
+	</shept-core:table>
+
+</jsp:root>

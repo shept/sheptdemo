@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<context:annotation-config />
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:hibernate.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="multipartFileEditor"
+		class="org.springframework.web.multipart.support.ByteArrayMultipartFileEditor">
+	</bean>
+
+	<bean id="bindingInitializer" parent="sheptBindingInitializerTemplate">
+		<property name="customEditorsForType">
+			<map>
+				<entry key="byte[]" value-ref="multipartFileEditor" />
+			</map>
+		</property>
+		<property name="dateTimeFormat" value="DATE_FORMAT_SHORT" />
+		<property name="formatResolver" ref="localeFormatResolver" />
+	</bean>
+
+	<!-- This is the parent controller of all components -->
+	<bean id="sheptController" abstract="true" parent="sheptControllerTemplate">
+		<property name="webBindingInitializer" ref="bindingInitializer" />
+	</bean>
+
+	<bean id="urlMapping" parent="sheptMappingTemplate" 
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping">
+		<property name="interceptors" >
+			<list merge="true" >
+         	</list>
+    	</property>
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="contentType" value="text/html;charset=UTF-8" />
+		<property name="prefix" value="/WEB-INF/jspx/" />
+		<property name="suffix" value=".jspx" />
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+
+		<!-- one of the properties available; the maximum file size in bytes -->
+		<property name="maxUploadSize" value="5000000" />
+	</bean>
+
+	<bean name="/imgFile.shept" class="org.shept.apps.demo.web.controller.ImageController" />
+
+	<!-- Shept controllers start here -->
+
+	<bean name="/person.shept" parent="sheptController">
+		<property name="configuration">
+			<bean parent="sheptTargetTemplate">
+				<property name="to" ref="persons" />
+				<property name="info.code" value="persons" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean name="/address.shept" parent="sheptController">
+		<property name="configuration">
+			<bean parent="sheptTargetTemplate">
+				<property name="to" ref="addresses" />
+				<property name="info.code" value="addresses" />
+				<property name="filterClass" value="org.shept.apps.demo.web.controller.filters.AddressFilter" />
+			</bean>
+		</property>
+	</bean>
+
+
+</beans>
