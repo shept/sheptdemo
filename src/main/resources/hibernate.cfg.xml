@@ -3,14 +3,8 @@
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql:sheptDemo</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.default_schema">s1</property>
-
+    <session-factory name="SheptDemSessionFactory">
 		<mapping class="org.shept.apps.demo.orm.Person" />
 		<mapping class="org.shept.apps.demo.orm.Address" />
-
     </session-factory>
 </hibernate-configuration>
