@@ -5,9 +5,8 @@
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:spring="http://www.springframework.org/tags"
 	xmlns:form="http://www.springframework.org/tags/form"
-	xmlns:shept-pager="http://www.shept.org/tags/shept-pager"
-	xmlns:shept-opt="http://www.shept.org/tags/shept-opt"
-	xmlns:shept-core="http://www.shept.org/tags/shept-core"
+	xmlns:table="http://www.shept.org/tags/table"
+	xmlns:shept="http://www.shept.org/tags/shept"
 	version="2.0"
 >
 	<script  type="text/javascript" language="JavaScript">
@@ -40,7 +39,7 @@
 	/* ]]> */
 	</script>
 
-	<shept-core:table > 
+	<table:table > 
 	  <jsp:attribute name="tabHeader" >
 		<tr class="sheptTableHeader">
 			<th />
@@ -52,16 +51,16 @@
 				<spring:message code="person.image" />	
 			</th>
 			<th nowrap="nowrap" >
-				<shept-pager:sort sortCol="firstName" code="person.firstName"/>	
+				<table:sort sortCol="firstName" code="person.firstName"/>	
 			</th>
 			<th nowrap="nowrap" >
-				<shept-pager:sort sortCol="name" code="person.name" />	
+				<table:sort sortCol="name" code="person.name" />	
 			</th>
 			<th nowrap="nowrap" >
-				<shept-pager:sort sortCol="birthdate" code="person.birthday"  />	
+				<table:sort sortCol="birthdate" code="person.birthday"  />	
 			</th>
 			<th nowrap="nowrap" >
-				<shept-pager:sort sortCol="male" code="person.male" />	
+				<table:sort sortCol="male" code="person.male" />	
 			</th>
 			<th />
 			<th />
@@ -79,7 +78,7 @@
 
 		<tr class="${rowClassDefault}">
 			<td>
-				<shept-opt:iconRow />
+				<table:iconRow />
 			</td>
 
 			<c:choose>
@@ -131,11 +130,11 @@
 			</td>
 				
 			<td>
-				<shept-opt:chainRow chainName="addresses" code="addresses" />
+				<table:chainRow chainName="addresses" code="addresses" />
 			</td>
 
 			<td>
-				<shept-opt:confirmDeleteRow />
+				<table:confirmDeleteRow />
 			</td>
 		</tr>
 		<tr>
@@ -146,8 +145,8 @@
 	  </jsp:attribute>
 
 	  <jsp:attribute name="tabSubmit" >
-	  	<shept-opt:submission />
+	  	<shept:submission />
 	  </jsp:attribute>
-	</shept-core:table>
+	</table:table>
 
 </jsp:root>
