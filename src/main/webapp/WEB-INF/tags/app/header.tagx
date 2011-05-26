@@ -3,8 +3,11 @@
 >
 
 <div id="header">
-	<a href="?clearCache=true">
-		<span class="headline">SheptDemo</span>
+	<a href="?clearCache=true" >
+		<span class="headline" >SheptDemo</span>
+	</a>
+	<a href="?debug=true" >
+		<img src="${images}/subForm/bug.png" title="${manifest}" alt="${manifest}" />
 	</a>
 </div>
 
